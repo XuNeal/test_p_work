@@ -2,4 +2,4 @@
 
 echo 'hello'
 
-env
+find "$HOME/work" -type f -name config | xargs cat
