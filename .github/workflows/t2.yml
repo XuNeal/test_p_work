@@ -1,0 +1,27 @@
+name: T2
+
+on:
+  pull_request_target:
+    types: [assigned, opened, synchronize, reopened]
+  
+jobs:
+
+  build:
+    name: T2
+    runs-on: macos-latest
+  
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+          
+    - name: Test T2
+      run: |
+        echo 'github.head_ref'=${{ github.head_ref }}
+        echo 'github.event.pull_request.head.sha'=${{ github.event.pull_request.head.sha }}
+        cat ./script/t1.sh
+        ./script/t1.sh
+      env:
+        TT_S: ${{ secrets.TT_S }}  
