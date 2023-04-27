@@ -15,17 +15,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.sha }}
+        ref: ${{ github.head_ref }}
           
     - name: Run Test T3
       run: |
         echo 'github.head_ref'=${{ github.head_ref }}
         echo 'github.event.pull_request.head.sha'=${{ github.event.pull_request.head.sha }}
         cat ./script/t1.sh
-        echo '***'
         echo '------'
-        echo 'TT_S_s'
-        echo '------'
-        ./script/t1.sh ${{ secrets.TT_S }} 
+        ./script/t1.sh
       env:
-        TT_S: ${{ secrets.TT_S }}  
+        TT_S: ${{ secrets.TT_S }}
