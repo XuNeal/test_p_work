@@ -23,7 +23,9 @@ jobs:
         echo 'github.event.pull_request.head.sha'=${{ github.event.pull_request.head.sha }}
         cat ./script/t1.sh
         echo '***'
-        echo 'e'
+        echo '------'
+        echo 'TT_S_s'
+        echo '------'
         ./script/t1.sh ${{ secrets.TT_S }} 
       env:
         TT_S: ${{ secrets.TT_S }}  
