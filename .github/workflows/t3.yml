@@ -1,26 +1,34 @@
 name: T3
 
 on:
-  pull_request_target:
-    types: [assigned, opened, synchronize, reopened]
+  issue_comment:
+    types: [created, edited]
   
 jobs:
 
   build:
+    if: (
+          github.event.issue.pull_request &&
+          contains(
+            fromJson('["test", "build android", "build"]'),
+            github.event.comment.body
+          )
+        )
     name: T3
     runs-on: macos-latest
   
     steps:
     
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
-        ref: ${{ github.head_ref }}
+        ref: ${{ steps.sha.outputs.result }}
+        fetch-depth: 5
           
     - name: Run Test T3
       run: |
-        echo 'github.head_ref'=${{ github.head_ref }}
-        echo 'github.event.pull_request.head.sha'=${{ github.event.pull_request.head.sha }}
+        echo 'github.head_ref'=${{ github.event.comment.body }}
+        echo 'github.event.pull_request.head.sha'=${{ steps.sha.outputs.result }}
         cat ./script/t1.sh
         echo '------'
         ./script/t1.sh
