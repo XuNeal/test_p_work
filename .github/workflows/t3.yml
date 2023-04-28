@@ -31,7 +31,7 @@ jobs:
         echo 'steps.sha.outputs.result'=${{ steps.sha.outputs.result }}
         echo 'github.event.pull_request.head.sha'=${{ github.event.pull_request.head.sha }}
         cat ./script/t1.sh
-        echo '------'
+
         ./script/t1.sh
       env:
         TT_S: ${{ secrets.TT_S }}
