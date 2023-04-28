@@ -27,8 +27,8 @@ jobs:
           
     - name: Run Test T3
       run: |
-        echo 'github.head_ref'=${{ github.event.comment.body }}
-        echo 'github.event.pull_request.head.sha'=${{ steps.sha.outputs.result }}
+        echo 'github.event.comment.body'=${{ github.event.comment.body }}
+        echo 'steps.sha.outputs.result'=${{ steps.sha.outputs.result }}
         cat ./script/t1.sh
         echo '------'
         ./script/t1.sh
