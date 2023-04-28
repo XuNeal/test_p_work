@@ -22,7 +22,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ steps.sha.outputs.result }}
+        ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 5
           
     - name: Run Test T3
